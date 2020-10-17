@@ -6,7 +6,7 @@ import java.util.Map;
 import net.hka.barista.model.Ingredient;
 
 /**
- * Provide all necessary data structures methods that are required for preparing
+ * Provide all necessary data structures that are required for preparing
  * ingredients that go into making drinks through the Ingredient model.
  * 
  * @author Hany Kamal

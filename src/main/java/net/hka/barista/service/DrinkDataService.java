@@ -6,7 +6,7 @@ import net.hka.barista.exception.InvalidDrinkNumberException;
 import net.hka.barista.model.Drink;
 
 /**
- * Provide all necessary data structures methods that are required for creating
+ * Provide all necessary data structures that are required for creating
  * the drink through the Drink model.
  * 
  * @author Hany Kamal

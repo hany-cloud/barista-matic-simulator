@@ -1,8 +1,7 @@
 package net.hka.barista.model;
 
 /**
- * Concrete class implementation for ingredients that go into making the drink
- * machine.
+ * Concrete class implementation for ingredients that go into making the drink.
  * 
  * @author Hany Kamal
  *

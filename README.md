@@ -35,42 +35,35 @@ Out of stock: <drink name>
 * Your program should be flexible enough to allow new drinks to be added to the menu without requiring extensive code changes.
 * Make sure your program works correctly for all combinations of inputs. You may include automated tests
 * Extensive inline or method-level comments are not required, unless you want to include them to highlight particular aspects of your design or implementation.
-Main interfaces, classes and Exceptions
-* BaristaMachine - an interface which defines public API of Barista-Matic Machine.
+
+## Main interfaces, classes and Exceptions
+* BaristaMachine - an interface which defines public API of Barista-Matic machine.
 * BaristaMachineImpl - a general purpose implementation of BaristaMachine interface.
-* Drink - An abstract class which defines public API of dispensed drink. 
-* DispensedDrink - A concrete class representing dispensed drink and extending Drink class. 
-* DrinkData - A helper package scope class to provide all data that used to make drink.
-* DrinkRefName – A type-safe Enum to represent reference names of available drinks that are supported by machine.
-* Ingredient - A base decorator class that extends the base drink class for representing any ingredient and can act as drink at any time.
-* IngredientData - A helper package scope class to provide all data that used to build ingredients.
-* IngredientRefName – A type-safe Enum to represent reference names of available ingredients that are used for preparing drinks supported by machine.
-* IngredientInventory - A singleton class that hides all the complicated operations that need to be done on the inventory and to keep tracking the ingredients amounts, deduction entries, and the availability of ingredients in the inventory.
-* Inventory - A type-safe inventory for holding objects, which is an ADAPTER or WRAPPER over java.util.Map.
+* Drink - Declare public API for drinks that are provided by Barista-Matic machine.
+* DrinkImpl - A concrete class representing drink. 
+* Ingredient - Declare public API for ingredients that go into making the drink.
+* IngredientImpl - Concrete class implementation for ingredients that go into making the drink.
+* DrinkRefName – A type-safe enumerator to represent reference names of available drinks that are supported by machine.
+* IngredientRefName – A type-safe enumerator to represent reference names of available ingredients along with its unit prices.
+* DrinkDataService - Provide all necessary data structures that are required for creating the drink through the Drink model.
+* IngredientDataService - Provide all necessary data structures that are required for preparing ingredients that go into making drinks through the Ingredient model.
+* InventoryService Declare all operations that are need to be done on the inventory to keep tracking the ingredients amounts and to determine its availability.
 * InvalidDrinkNumberException - thrown when user enters an invalid command. 
 * OutOfStockException - thrown when machine doesn't have enough ingredients for the selected drink.
 
 ## Data structures used
-* EnumMap data structure is used to implement ingredient, unit price pair.
-* Map data structure is used to implement 
+* Map data structure is used for representing: 
     1.	Ingredient, units pair for drink.
     2.	Ingredient, unit price pair.
-* List is used to representing list of available drinks.
+* List data structure is used for representing list of available drinks.
+* EnumMap data structure is used for representing IngredientRefName, Ingredient pair. I Preferred EnumMap over TreeMap because it's faster and the order is maintained in which the enumerator constants are declared, gives flexibility to change the order from enumerator itself.
 
-## Design patterns used and design decisions
-* Decorator Design pattern by using the Decorator pattern, the application can extend the functionality of Drink class at runtime, based on predefined ingredients units, beside that this pattern makes the design very flexible in the future in case of any updates could take place on the machine to give the customer an option to choose the ingredients’ units for drink.
-* Singleton design pattern is used to be sure that only one instance of IngredientInventory will be globally available at any time of execution since this class gives the chance for the machine to delegate all complicated inventory operations to it such as: 
-  1.	Applying the ingredients unit deduction for drink from inventory with possibility of throwing OutOfStockException. 
-  2.	To share the deduction entries with the machine. 
-  3.	To make it easy to restore the ingredients units in inventory at startup of the machine or upon user request.
-* Factory design pattern is used to encapsulate creation logic of Drink.
-* Adapter pattern is used to create Inventory by wrapping java.util.Map
-
+## Design decisions
 * “java.lang.Enum” is used to represent as reference name for Ingredient, because of following benefits:
   1. Compile time safety against entering an invalid ingredient name.
   2. No need to write code for checking if selected ingredient is valid.
   3. Reusable and well encapsulated.
-* BigDecimal to represent money instead of double primitive to follow best practices suggested in many resources.
+  4. All enumerators are acting as data source for the simulator application.
 
 ## Assumptions
 * The coffee dispensing machine is able to dispense a fixed set of possible drinks by combining these ingredients in different amounts but ingredients are not customizable i.e. in case of the user asking for “Coffee” drink, he cannot change the amounts of any of the ingredients such as adding one more unit of sugar or removing the sugar at all.
