@@ -13,7 +13,7 @@ public class InvalidDrinkNumberException extends IOException {
 	private String message;
 
 	public InvalidDrinkNumberException() {
-		this("");
+		this("The provided command or drink number is invalid!!!");
 	}
 
 	public InvalidDrinkNumberException(String string) {

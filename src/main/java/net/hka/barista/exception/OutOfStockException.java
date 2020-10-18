@@ -13,7 +13,7 @@ public class OutOfStockException extends Exception {
 	private String message;
 
 	public OutOfStockException() {
-		this("");
+		this("Out of stock - insufficient balance!!!");
 	}
 
 	public OutOfStockException(String string) {
