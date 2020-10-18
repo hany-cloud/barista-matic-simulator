@@ -20,6 +20,13 @@ public interface IngredientDataService {
 	 * @return collection of drinks provided by machine
 	 */
 	Collection<Ingredient> listSortedIngredients();
+	
+	/**
+	 * List all ingredients.
+	 * 
+	 * @return collection of drinks provided by machine
+	 */
+	Collection<Ingredient> listIngredients();
 
 	/**
 	 * Populate ingredients along with required units that are going into making

@@ -49,9 +49,11 @@ public class DrinkDataServiceImpl implements DrinkDataService {
 	}
 
 	@Override
-	public Drink getDrinkByDrinkOption(String drinkNumberOption) throws InvalidDrinkNumberException {
-		Integer drinkNumber = Optional.ofNullable(drinkNumberOption).filter(str -> str.matches("-?\\d+"))
-				.map(Integer::parseInt).filter(num -> num > 0 && num - 1 < listSortedDrinks().size())
+	public Drink getDrinkByDrinkOption(final String drinkNumberOption) throws InvalidDrinkNumberException {
+		Integer drinkNumber = Optional.ofNullable(drinkNumberOption)
+				.filter(str -> str.matches("-?\\d+"))
+				.map(Integer::parseInt)
+				.filter(num -> num > 0 && num - 1 < listSortedDrinks().size())
 				.orElseThrow(InvalidDrinkNumberException::new);
 
 		return listSortedDrinks().get(drinkNumber - 1);

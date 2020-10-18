@@ -50,10 +50,19 @@ public class IngredientDataServiceImpl implements IngredientDataService {
 		return ingredients;
 	}
 
+	@Override
 	public Collection<Ingredient> listSortedIngredients() {
 		return ingredients.values();
 	}
+	
+	@Override
+	public Collection<Ingredient> listIngredients() {
+		return listSortedIngredients();
+	}
 
+	// Preferred to use String drinkName as a parameter over DrinklRefName
+	// enumerator, so this method can be easily updated or replaced  in case of
+	// using a different data-source such as a database.
 	@Override
 	public Map<Ingredient, Integer> populateIngredientUnitsByDrink(final String drinkName) {
 		Map<Ingredient, Integer> ingredientUnits = new HashMap<>();

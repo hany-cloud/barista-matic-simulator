@@ -11,8 +11,12 @@ import java.util.Map;
  */
 enum DrinklRefName {
 
-	CAFFE_AMERICANO("Caffe Americano"), CAFFE_LATTE("Caffe Latte"), CAFFE_MOCHA("Caffe Mocha"),
-	CAPPUCCINO("Cappuccino"), COFFEE("Coffee"), DECAFE_CAFFE("Decaf Coffee");
+	CAFFE_AMERICANO("Caffe Americano"), 
+	CAFFE_LATTE("Caffe Latte"), 
+	CAFFE_MOCHA("Caffe Mocha"),
+	CAPPUCCINO("Cappuccino"), 
+	COFFEE("Coffee"), 
+	DECAFE_CAFFE("Decaf Coffee");
 
 	// Lookup table used to get Enum constant from drink String name
 	private static final Map<String, DrinklRefName> lookup = new HashMap<>();

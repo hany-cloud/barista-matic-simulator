@@ -26,7 +26,7 @@ public class InventoryServiceImpl implements InventoryService {
 
 	@Override
 	public void restore() {
-		ingredientDataService.listSortedIngredients()
+		ingredientDataService.listIngredients()
 				.forEach((ingredient) -> ingredientUnitBalance.put(ingredient, RESTORE_UNIT_VALUE));
 	}
 
