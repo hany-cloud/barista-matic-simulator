@@ -47,6 +47,7 @@ public class BaristaMachineImpl implements BaristaMachine {
 
 	@Override
 	public void startUp(final Scanner scanner) {
+		if(scanner == null) throw new IllegalArgumentException("The provided scanner is null!");
 		System.out.println(this.buildView());
 
 		String command = "";
@@ -58,9 +59,10 @@ public class BaristaMachineImpl implements BaristaMachine {
 
 		scanner.close();
 	}
-
+	
 	@Override
 	public StringBuilder execute(final String menuOption) {
+		if(menuOption.isEmpty()) throw new IllegalArgumentException("The provided menuOption is null!");
 		StringBuilder response = new StringBuilder();
 		switch (menuOption) {
 		case "":

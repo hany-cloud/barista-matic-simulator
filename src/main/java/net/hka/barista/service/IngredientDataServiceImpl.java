@@ -65,8 +65,10 @@ public class IngredientDataServiceImpl implements IngredientDataService {
 	// using a different data-source such as a database.
 	@Override
 	public Map<Ingredient, Integer> populateIngredientUnitsByDrink(final String drinkName) {
+		if(drinkName.isEmpty()) throw new IllegalArgumentException("The provided drinkName is null or empty!");
 		Map<Ingredient, Integer> ingredientUnits = new HashMap<>();
 		DrinklRefName drinklRefName = DrinklRefName.get(drinkName);
+		if(drinklRefName == null) throw new IllegalArgumentException("The provided drinkName is not legal!");
 		switch (drinklRefName) {
 		case CAFFE_AMERICANO:
 			ingredientUnits.put(getIngredients().get(IngredientRefName.ESPRESSO), AMERICANO_ESPRESSO_UNITS);

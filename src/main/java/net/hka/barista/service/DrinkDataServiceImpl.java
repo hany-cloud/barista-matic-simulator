@@ -58,5 +58,14 @@ public class DrinkDataServiceImpl implements DrinkDataService {
 
 		return listSortedDrinks().get(drinkNumber - 1);
 	}
+	
+	public static void main(String[] args) {
+		try {
+			new DrinkDataServiceImpl().getDrinkByDrinkOption(null);
+		} catch (InvalidDrinkNumberException e) {
+			System.out.println("error");
+			e.printStackTrace();
+		}
+	}
 
 }

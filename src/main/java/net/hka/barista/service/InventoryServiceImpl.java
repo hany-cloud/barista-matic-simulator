@@ -32,6 +32,7 @@ public class InventoryServiceImpl implements InventoryService {
 
 	@Override
 	public void deduct(final Map<Ingredient, Integer> ingredients) throws OutOfStockException {
+		if(ingredients == null || ingredients.isEmpty()) throw new IllegalArgumentException("The provided ingredients is null or empty!");
 		if (!canApplyDeduct(ingredients))
 			throw new OutOfStockException();
 		ingredients.forEach((ingredient, deductingUnit) -> {
@@ -42,6 +43,7 @@ public class InventoryServiceImpl implements InventoryService {
 
 	@Override
 	public boolean canApplyDeduct(final Map<Ingredient, Integer> ingredients) {
+		if(ingredients == null || ingredients.isEmpty()) throw new IllegalArgumentException("The provided ingredients is null or empty!");
 		for (Map.Entry<Ingredient, Integer> entry : ingredients.entrySet()) {
 			Ingredient ingredient = entry.getKey();
 			int deductingUnit = entry.getValue();
