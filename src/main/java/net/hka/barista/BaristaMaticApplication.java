@@ -17,8 +17,8 @@ public class BaristaMaticApplication {
 	 */
 	public static void main(String[] args) {
 		BaristaMachine machine = new BaristaMachineImpl();
-		Scanner scanner = new Scanner(System.in);
-		machine.startUp(scanner);
+		Scanner uiHandler = new Scanner(System.in);
+		machine.startUp(uiHandler);
 	}
 
 }

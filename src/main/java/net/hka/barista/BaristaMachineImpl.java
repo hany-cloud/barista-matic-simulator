@@ -46,18 +46,18 @@ public class BaristaMachineImpl implements BaristaMachine {
 	}
 
 	@Override
-	public void startUp(final Scanner scanner) {
-		if(scanner == null) throw new IllegalArgumentException("The provided scanner is null!");
+	public void startUp(final Scanner uiHandler) {
+		if(uiHandler == null) throw new IllegalArgumentException("The provided scanner is null!");
 		System.out.println(this.buildView());
 
 		String command = "";
 		do {
-			command = scanner.nextLine().trim();
+			command = uiHandler.nextLine().trim();
 			StringBuilder response = execute(command);
 			renderView(response);
 		} while (!command.equalsIgnoreCase("q"));
 
-		scanner.close();
+		uiHandler.close();
 	}
 	
 	@Override

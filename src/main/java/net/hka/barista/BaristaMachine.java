@@ -15,7 +15,7 @@ public interface BaristaMachine {
 	 * 
 	 * @param scanner parsing user entry commands
 	 */
-	void startUp(final Scanner scanner);
+	void startUp(final Scanner uiHandler);
 
 	/**
 	 * Execut the corresponding action for provided menu option and return the
